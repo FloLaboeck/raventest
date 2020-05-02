@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TodoMockServiceService } from 'src/app/services/impl/todo-mock-service.service';
+import { Observable } from 'rxjs';
+import { Todo } from 'src/app/model/interfaces/todo';
 
 @Component({
   selector: 'app-todo-list',
@@ -7,11 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoListComponent implements OnInit {
 
-  todoItems: Array<string> = ['1', '2'];
+  todoItems: Observable<Array<Todo>>;
 
-  constructor() { }
+  constructor(private todoMockServiceService: TodoMockServiceService) { }
 
   ngOnInit(): void {
+    this.todoItems = this.todoMockServiceService.getTodos();
   }
-
 }
