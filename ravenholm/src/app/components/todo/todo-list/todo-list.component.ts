@@ -15,11 +15,11 @@ import { TodoMockService } from 'src/app/services/impl/todo-mock-service.service
 
 export class TodoListComponent implements OnInit {
 
-  todoItems: Observable<Array<Todo>>;
+  todoItems: Array<Todo>;
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todoItems = this.todoService.getTodos();
+    this.todoService.getTodos().subscribe(t => this.todoItems = t);
   }
 }

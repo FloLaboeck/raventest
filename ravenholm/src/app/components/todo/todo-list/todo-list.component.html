@@ -1,3 +1,2 @@
-<div *ngFor="let todoItem of todoItems">
-  <h3>{{todoItem}}</h3>
-</div>
+<app-todo-item *ngFor="let todo of todoItems" [todo]="todo">
+</app-todo-item>

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { TodoItem } from '../../model/dtos/todo-item';
 import { TodoState } from '../../model/enums/todo-state.enum';
 import { Todo } from '../../model/interfaces/todo';
@@ -20,11 +20,15 @@ export class TodoMockService implements TodoService {
     new TodoItem({
       description: 'Zweites Todo',
       state: TodoState.Open
+    }),
+    new TodoItem({
+      description: 'Drittes Todo',
+      state: TodoState.Open
     })
   ];
 
   public getTodos(): Observable<Array<Todo>> {
-    return Observable.create(this.todoItems);
+    return of(this.todoItems);
   }
 
   public updateTodo(todoItem: Todo): void {
