@@ -1,20 +1,25 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoMockServiceService } from 'src/app/services/impl/todo-mock-service.service';
 import { Observable } from 'rxjs';
 import { Todo } from 'src/app/model/interfaces/todo';
+import { TodoService } from 'src/app/services/todo-service';
+import { TodoMockService } from 'src/app/services/impl/todo-mock-service.service';
 
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
-  styleUrls: ['./todo-list.component.sass']
+  styleUrls: ['./todo-list.component.sass'],
+  providers: [
+    { provide: TodoService, useClass: TodoMockService}
+  ],
 })
+
 export class TodoListComponent implements OnInit {
 
   todoItems: Observable<Array<Todo>>;
 
-  constructor(private todoMockServiceService: TodoMockServiceService) { }
+  constructor(private todoService: TodoService) { }
 
   ngOnInit(): void {
-    this.todoItems = this.todoMockServiceService.getTodos();
+    this.todoItems = this.todoService.getTodos();
   }
 }

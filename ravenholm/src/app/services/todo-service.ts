@@ -1,9 +1,11 @@
 import { Observable } from 'rxjs';
 import { Todo } from '../model/interfaces/todo';
+import { Injectable } from '@angular/core';
 
-export interface TodoService {
-  getTodos(): Observable<Array<Todo>>;
-  updateTodo(todoItem: Todo): void;
-  createTodo(todoItem: Todo): void;
-  deleteTodo(todoItem: Todo): void;
+@Injectable()
+export abstract class TodoService {
+  abstract getTodos(): Observable<Array<Todo>>;
+  abstract updateTodo(todoItem: Todo): void;
+  abstract createTodo(todoItem: Todo): void;
+  abstract deleteTodo(todoItem: Todo): void;
 }

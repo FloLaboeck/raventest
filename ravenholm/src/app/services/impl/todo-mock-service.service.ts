@@ -8,7 +8,7 @@ import { TodoService } from '../todo-service';
 @Injectable({
   providedIn: 'root'
 })
-export class TodoMockServiceService implements TodoService {
+export class TodoMockService implements TodoService {
 
   constructor() { }
 
